@@ -4,9 +4,7 @@ import Block from './Block'
 import BoardManager from '../model/BoardManager'
 
 export default Board = (props) => {
-    let manager = new BoardManager(props.size.cols, props.size.rows)
-
-    let rows = manager.generateBoard().map((row, rowIndex) => {
+    let rows = props.board.map((row, rowIndex) => {
 
         let columns = row.map((column, colIndex) => {
             return (

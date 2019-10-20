@@ -1,9 +1,10 @@
 import React from 'react'
 import { TouchableOpacity, ImageBackground, View, StyleSheet, Text } from 'react-native'
+import BoardManager from '../model/BoardManager'
 
 export default Controls = (props) => {
     const handleClick = (direction) => {
-        console.log(direction)
+        props.move(direction)
     }
 
     return (
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
     container: {
         // borderWidth: 2,
         // borderColor: 'blue',
+        // backgroundColor: 'grey'
         height: '50%',
         width: '50%',
         flexDirection: 'column',
@@ -56,8 +58,8 @@ const styles = StyleSheet.create({
     },
 
     buttonStyle: {
-        // borderWidth: 2,
-        // borderColor: 'red',
+        borderWidth: 2,
+        borderColor: 'red',
         width: 50,
         height: 50,
     },

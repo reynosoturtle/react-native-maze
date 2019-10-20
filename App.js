@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -26,12 +26,23 @@ import {
 
 import Board from './components/Board'
 import Controls from './components/Controls'
+import BoardManager from './model/BoardManager'
+
 
 const App: () => React$Node = () => {
-  let size = {
-    rows: 10,
-    cols: 10
+
+  const [size, setSize] = useState({ x: 10, y: 10 })
+
+  let boardManager = new BoardManager(size.x, size.y)
+  let startingBoard = boardManager.generateBoard()
+
+  const [board, setBoard] = useState(startingBoard)
+
+  const moveHandler = (direction) => {
+    boardManager.moveCharacter(direction)
+    setBoard(boardManager.board)
   }
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -40,11 +51,11 @@ const App: () => React$Node = () => {
 
         <View style={styles.container}>
           <View />
-          <Board size={size} />
+          <Board board={board} />
         </View>
 
         <View>
-          <Controls />
+          <Controls move={(direction) => moveHandler(direction)} />
         </View>
       </SafeAreaView>
     </>
