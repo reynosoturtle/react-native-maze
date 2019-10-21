@@ -58,30 +58,34 @@ export default class BoardManager {
     }
 
     moveUp() {
-        if (this.characterY == 0) {
+        if (!this.isValidPosition(this.characterX, this.characterY - 1)) {
             return
         }
         this.characterY--
     }
 
     moveDown() {
-        if (this.characterY == this.rows - 1) {
+        if (!this.isValidPosition(this.characterX, this.characterY + 1)) {
             return
         }
         this.characterY++
     }
 
     moveLeft() {
-        if (this.characterX == 0) {
+        if (!this.isValidPosition(this.characterX - 1, this.characterY)) {
             return
         }
         this.characterX--
     }
 
     moveRight() {
-        if (this.characterX == this.cols - 1) {
+        if (!this.isValidPosition(this.characterX + 1, this.characterY)) {
             return
         }
         this.characterX++
+    }
+
+    isValidPosition(x, y) {
+        return x < this.cols && x >= 0 && y < this.rows && y >= 0 && !(this.board[x][y] instanceof Wall)
     }
 }

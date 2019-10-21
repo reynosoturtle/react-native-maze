@@ -33,10 +33,9 @@ const App: () => React$Node = () => {
 
   const [size, setSize] = useState({ x: 10, y: 10 })
 
-  let boardManager = new BoardManager(size.x, size.y)
-  let startingBoard = boardManager.generateBoard()
+  const [boardManager, setBoardManager] = useState(new BoardManager(size.x, size.y))
 
-  const [board, setBoard] = useState(startingBoard)
+  const [board, setBoard] = useState(boardManager.board)
 
   const moveHandler = (direction) => {
     boardManager.moveCharacter(direction)
@@ -51,7 +50,7 @@ const App: () => React$Node = () => {
 
         <View style={styles.container}>
           <View />
-          <Board board={boardManager.board} />
+          <Board board={board} />
         </View>
 
         <View>
