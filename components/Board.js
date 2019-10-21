@@ -5,7 +5,6 @@ import BoardManager from '../model/BoardManager'
 
 export default Board = (props) => {
     let rows = props.board.map((row, rowIndex) => {
-
         let columns = row.map((column, colIndex) => {
             return (
                 <View key={colIndex} style={styles.column}>

@@ -51,7 +51,7 @@ const App: () => React$Node = () => {
 
         <View style={styles.container}>
           <View />
-          <Board board={board} />
+          <Board board={boardManager.board} />
         </View>
 
         <View>
