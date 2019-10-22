@@ -31,7 +31,7 @@ import BoardManager from './model/BoardManager'
 
 const App: () => React$Node = () => {
 
-  const [size, setSize] = useState({ x: 10, y: 10 })
+  const [size, setSize] = useState({ x: 15, y: 15 })
 
   const [boardManager, setBoardManager] = useState(new BoardManager(size.x, size.y))
 
